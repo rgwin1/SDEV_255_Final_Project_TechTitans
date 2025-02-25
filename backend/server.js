@@ -4,8 +4,7 @@ const connectDB = require("./db"); // Import the DB connection
 const courseRoutes = require('./routes/courseRoutes');
 
 const app = express();
-const PORT = 3000;
-
+const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(cors());
