@@ -4,7 +4,7 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/courses")
+    fetch("https://glitch.com/edit/#!/innovative-selective-power?path=README.md%3A1%3A0")
       .then((response) => response.json())
       .then((data) => setCourses(data))
       .catch((error) => console.error("Error fetching courses:", error));
