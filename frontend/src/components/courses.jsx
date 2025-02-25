@@ -4,10 +4,21 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    fetch("https://glitch.com/edit/#!/innovative-selective-power?path=README.md%3A1%3A0")
-      .then((response) => response.json())
-      .then((data) => setCourses(data))
-      .catch((error) => console.error("Error fetching courses:", error));
+    fetch("https://sdev255fpbackend.glitch.me/api/courses")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json(); // Parse JSON if response is OK
+    })
+    .then((data) => {
+      // Process the data
+      setCourses(data);
+    })
+    .catch((error) => {
+      console.error("Error fetching courses:", error);
+    });
+  
   }, []);
 
   return (
