@@ -1,0 +1,33 @@
+[
+    {
+      "name": "Web Development Fundamentals",
+      "description": "An introduction to web technologies including HTML, CSS, and JavaScript.",
+      "subject": "Computer Science",
+      "credits": 3
+    },
+    {
+      "name": "Introduction to Cybersecurity",
+      "description": "Covers basic security principles, cryptography, and network security.",
+      "subject": "Cybersecurity",
+      "credits": 4
+    },
+    {
+      "name": "Data Analysis with Python",
+      "description": "Learn data processing and visualization techniques using Python libraries.",
+      "subject": "Data Science",
+      "credits": 3
+    },
+    {
+      "name": "Software Engineering Principles",
+      "description": "Focuses on software development methodologies, testing, and project management.",
+      "subject": "Software Engineering",
+      "credits": 4
+    },
+    {
+      "name": "Artificial Intelligence Basics",
+      "description": "Introduces AI concepts such as machine learning, neural networks, and algorithms.",
+      "subject": "Artificial Intelligence",
+      "credits": 3
+    }
+  ]
+  
