@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-
-const Courses = () => {
+const API_URL = import.meta.env.VITE_API_URL;
+const CourseList = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    fetch("https://sdev255fpbackend.glitch.me/api/courses")
+    fetch(`${API_URL}/api/courses`)
+    // fetch("https://sdev255fpbackend.glitch.me/api/courses")
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -46,4 +47,4 @@ const Courses = () => {
   );
 };
 
-export default Courses;
+export default CourseList;
