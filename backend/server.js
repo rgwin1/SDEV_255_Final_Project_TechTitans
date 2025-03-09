@@ -1,32 +1,40 @@
-require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
-const connectDB = require("./db"); // Import the DB connection
-const courseRoutes = require('./routes/courseRoutes');
-const authRoutes = require('./routes/authRoutes');
-const app = express();
-const PORT = process.env.PORT;
-// Middleware
-app.use(express.json());
+const fs = require("fs");
+const path = require("path");
 
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// ✅ CORS Configuration - Allows frontend to communicate properly
 app.use(cors({
-  origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(",") : ["http://localhost:5173"], 
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true 
+    origin: "http://localhost:5173", // Update this to match your frontend URL
+    credentials: true
 }));
 
-// Connect to MongoDB
-connectDB();
+app.use(express.json());
 
-app.use('/api/auth', authRoutes);
+// ✅ Ensure `data/` directory and `courses.json` exist
+const DATA_DIR = path.join(__dirname, "data");
+const COURSES_FILE = path.join(DATA_DIR, "courses.json");
+
+if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR);
+}
+
+if (!fs.existsSync(COURSES_FILE)) {
+    fs.writeFileSync(COURSES_FILE, "[]"); // Create empty courses.json if missing
+}
+
+// ✅ Import Routes
+const authRoutes = require("./routes/auth");
+const courseRoutes = require("./routes/courses");
+
+// ✅ Use Routes
+app.use("/api/auth", authRoutes);
 app.use("/api/courses", courseRoutes);
 
-// Simple Route
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
-
-// Start Server
+// ✅ Start Server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });

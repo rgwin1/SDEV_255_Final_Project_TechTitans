@@ -1,0 +1,42 @@
+[
+  {
+    "id": "101",
+    "name": "Introduction to Computer Science",
+    "description": "An overview of fundamental computing concepts and programming principles.",
+    "subject": "Computer Science",
+    "credits": 3,
+    "createdBy": "teacher1"
+  },
+  {
+    "id": "102",
+    "name": "Data Structures and Algorithms",
+    "description": "Learn about arrays, linked lists, trees, graphs, sorting, and searching algorithms.",
+    "subject": "Computer Science",
+    "credits": 4,
+    "createdBy": "teacher2"
+  },
+  {
+    "id": "103",
+    "name": "Web Development",
+    "description": "Covers HTML, CSS, JavaScript, and front-end frameworks like React.",
+    "subject": "Software Engineering",
+    "credits": 3,
+    "createdBy": "teacher1"
+  },
+  {
+    "id": "104",
+    "name": "Database Management",
+    "description": "An introduction to relational databases, SQL, and NoSQL systems.",
+    "subject": "Information Systems",
+    "credits": 3,
+    "createdBy": "teacher3"
+  },
+  {
+    "id": "105",
+    "name": "Cybersecurity Fundamentals",
+    "description": "Understand threats, cryptography, network security, and risk management.",
+    "subject": "Cybersecurity",
+    "credits": 4,
+    "createdBy": "teacher2"
+  }
+]

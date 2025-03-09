@@ -1,25 +1,17 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 const API_URL = import.meta.env.VITE_API_URL;
+
 const CourseList = () => {
   const [courses, setCourses] = useState([]);
+  const role = localStorage.getItem("role");
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     fetch(`${API_URL}/api/courses`)
-    // fetch("https://sdev255fpbackend.glitch.me/api/courses")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json(); // Parse JSON if response is OK
-    })
-    .then((data) => {
-      // Process the data
-      setCourses(data);
-    })
-    .catch((error) => {
-      console.error("Error fetching courses:", error);
-    });
-  
+      .then((response) => response.json())
+      .then((data) => setCourses(data))
+      .catch((error) => console.error("Error fetching courses:", error));
   }, []);
 
   return (
@@ -31,14 +23,22 @@ const CourseList = () => {
             <th>Course Name</th>
             <th>Course Description</th>
             <th>Credits</th>
+            {role === "teacher" && <th>Actions</th>}
           </tr>
         </thead>
         <tbody>
-          {courses.map((courses) => (
-            <tr key={courses._id}>
-              <td>{courses.name}</td>
-              <td>{courses.description}</td>
-              <td>{courses.credits}</td>
+          {courses.map((course) => (
+            <tr key={course._id}>
+              <td>{course.name}</td>
+              <td>{course.description}</td>
+              <td>{course.credits}</td>
+              {role === "teacher" && course.createdBy === userId && (
+                <td>
+                  <Link to={`/editcourse/:courseId`}>
+                    <button>Edit</button>
+                  </Link>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>
@@ -46,5 +46,9 @@ const CourseList = () => {
     </div>
   );
 };
+console.log("roles from localstorage:", role);
+console.log("UID from LS", userId);
+console.log("Course data: ", courses);
+
 
 export default CourseList;
